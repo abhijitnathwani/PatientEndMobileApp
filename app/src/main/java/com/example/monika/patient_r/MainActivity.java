@@ -317,13 +317,8 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this,"Select Gender",Toast.LENGTH_SHORT).show();
                 }*/
               else {
-//                    try {
-//                        Log.d("Doc1:",json_aadhar.getString(doc1.getSelectedItemPosition()).toString());
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-                    Toast.makeText(MainActivity.this,doc1.getSelectedItemPosition(),Toast.LENGTH_LONG).show();
-                    //publishData();
+
+                    publishData();
                    //Intent i = new Intent(MainActivity.this, ConfirmActivity.class);
                    //startActivity(i);
                }
@@ -444,14 +439,7 @@ public class MainActivity extends AppCompatActivity
         adddata.add(pushdata);
     }
 
-    public void onItemSelected(AdapterView<?> doc1, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = doc1.getItemAtPosition(position).toString();
 
-        // Showing selected spinner item
-        Toast.makeText(doc1.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
-    }
     public void publishData() {
 
             final RequestQueue adddata;
@@ -461,33 +449,33 @@ public class MainActivity extends AppCompatActivity
         String aadharidofdoc3 = null;
         String aadharidofdoc4 = null;
         String aadharidofdoc5 = null;
-        /*try {
-            aadharidofdoc1 = json_aadhar.getString(doc1.getSelectedItemPosition()).toString();
+        try {
+            aadharidofdoc1 = json_aadhar.getString(doc1.getSelectedItemPosition() - 1).toString();
             Log.d("Doc 1 Position:",aadharidofdoc1);
             //Log.d("",doc1.getSelectedItemId())
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
-            aadharidofdoc1 = json_aadhar.getString(doc2.getSelectedItemPosition()).toString();
+            aadharidofdoc2 = json_aadhar.getString(doc2.getSelectedItemPosition() - 1).toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
-            aadharidofdoc1 = json_aadhar.getString(doc3.getSelectedItemPosition()).toString();
+            aadharidofdoc3 = json_aadhar.getString(doc3.getSelectedItemPosition() - 1).toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
-            aadharidofdoc1 = json_aadhar.getString(doc4.getSelectedItemPosition()).toString();
+            aadharidofdoc4 = json_aadhar.getString(doc4.getSelectedItemPosition() - 1).toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
-            aadharidofdoc1 = json_aadhar.getString(doc5.getSelectedItemPosition()).toString();
+            aadharidofdoc5 = json_aadhar.getString(doc5.getSelectedItemPosition() - 1).toString();
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
+        }
 
         String url="http://eitraproject.ml/telehealth/patient_reg.php?"+
                     "aadhar_id="+obj_adhar.getText().toString()+
