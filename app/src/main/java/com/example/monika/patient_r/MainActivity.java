@@ -491,11 +491,11 @@ public class MainActivity extends AppCompatActivity
                     "&age="+obj_age.getText().toString()+
                     "&gender="+gender.toString()+
                     "&blood_group="+obj_bg.getSelectedItem().toString()+
-                    "&doc1=1234567891234067"+aadharidofdoc1+
-                    "&doc2=1234567891234067"+aadharidofdoc2+
-                    "&doc3=1234567891234067"+aadharidofdoc3+
-                    "&doc4=1234567891234067"+aadharidofdoc4+
-                    "&doc5=1234567891234067"+aadharidofdoc5;
+                    "&doc1="+aadharidofdoc1+
+                    "&doc2="+aadharidofdoc2+
+                    "&doc3="+aadharidofdoc3+
+                    "&doc4="+aadharidofdoc4+
+                    "&doc5="+aadharidofdoc5;
 
 
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
