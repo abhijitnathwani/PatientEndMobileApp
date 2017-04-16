@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
     private Pattern pattern;
     private Matcher matcher_bday;
     private static final String DATE_PATTERN =
-            "((19|20)\\d\\d)[/](0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])";//yyyy/mm/dd
+            "((19|20)\\d\\d)[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])";//yyyy/mm/dd
             //"(0[1-9]|1[012])[/.-](0[1-9]|[12][0-9]|3[01])[/.-]((19|20)\\d\\d)";
            //"^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d{2}$"; //mm/dd/yyyy vallid pattern
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
 
         doc1.setAdapter(spinnerAdapterdoc1);
         spinnerAdapterdoc1.add("Select Any One");
-        doc1.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
         doc2.setAdapter(spinnerAdapterdoc1);
         spinnerAdapterdoc2.add("Select Any One");
 
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-                else if(obj_doc1.getText().toString().length()==0){
+                /*else if(obj_doc1.getText().toString().length()==0){
                     obj_doc1.setError("doctor name not entered");
                     obj_doc1.requestFocus();
                 }
@@ -309,7 +309,7 @@ public class MainActivity extends AppCompatActivity
                 else if(obj_doc5.getText().toString().length()==0){
                     obj_doc5.setError("doctor name not entered");
                     obj_doc5.requestFocus();
-                }
+                }*/
                 /*if(gender.toString().length()==0){
                     Toast.makeText(MainActivity.this,"Select Gender",Toast.LENGTH_SHORT).show();
                 }
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity
         final RequestQueue adddata;
         adddata= Volley.newRequestQueue(this);
 
-        String url="http://eitraproject.ml/telehealth/doctor_list1.php";
+        String url="http://192.168.43.176/telehealthnew/doctor_list1.php";
 
 
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -477,7 +477,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String url="http://eitraproject.ml/telehealth/patient_reg.php?"+
+        String url="http://192.168.43.176/telehealthnew/patient_reg.php?"+
                     "aadhar_id="+obj_adhar.getText().toString()+
                     "&password="+obj_pass.getText().toString()+
                     "&first_name="+obj_name.getText().toString()+
@@ -497,7 +497,7 @@ public class MainActivity extends AppCompatActivity
                     "&doc4="+aadharidofdoc4+
                     "&doc5="+aadharidofdoc5;
 
-
+        Toast.makeText(MainActivity.this,url,Toast.LENGTH_LONG).show();
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
               public void onResponse(String response) {
