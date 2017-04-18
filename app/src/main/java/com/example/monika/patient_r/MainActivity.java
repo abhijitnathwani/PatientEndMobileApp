@@ -112,11 +112,7 @@ public class MainActivity extends AppCompatActivity
         obj_bg= (Spinner) findViewById(R.id.bloodgroup);
         res = getResources();
         doc_names = res.getStringArray(R.array.doctor_list);
-        //obj_doc1=(EditText) findViewById(R.id.d1);
-      //  obj_doc2=(EditText) findViewById(R.id.d2);
-       // obj_doc3=(EditText) findViewById(R.id.d3);
-       // obj_doc4=(EditText) findViewById(R.id.d4);
-        //obj_doc5=(EditText) findViewById(R.id.d5);
+
 
 
 
@@ -266,7 +262,7 @@ public class MainActivity extends AppCompatActivity
                 else if (!matcher_bday.matches()) {
 
                        // Toast.makeText(MainActivity.this, "Birthday format should be yyyy/mm/dd!", Toast.LENGTH_SHORT).show();
-                    obj_dob.setError("Birthday format should be yyyy/mm/dd!");
+                    obj_dob.setError("Birthday format should be yyyy-mm-dd!");
                     obj_dob.requestFocus();
                 }
 
@@ -286,37 +282,7 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-                /*else if(obj_doc1.getText().toString().length()==0){
-                    obj_doc1.setError("doctor name not entered");
-                    obj_doc1.requestFocus();
-                }
-
-              else if(obj_doc2.getText().toString().length()==0){
-                    obj_doc2.setError("doctor name not entered");
-                    obj_doc2.requestFocus();
-                }
-
-               else if(obj_doc3.getText().toString().length()==0){
-                    obj_doc3.setError("doctor name not entered");
-                    obj_doc3.requestFocus();
-                }
-
-                else if(obj_doc4.getText().toString().length()==0){
-                    obj_doc4.setError("doctor name not entered");
-                    obj_doc4.requestFocus();
-                }
-
-                else if(obj_doc5.getText().toString().length()==0){
-                    obj_doc5.setError("doctor name not entered");
-                    obj_doc5.requestFocus();
-                }*/
-                /*if(gender.toString().length()==0){
-                    Toast.makeText(MainActivity.this,"Select Gender",Toast.LENGTH_SHORT).show();
-                }
-                /*if(gender.equals("")) {
-                    Toast.makeText(MainActivity.this,"Select Gender",Toast.LENGTH_SHORT).show();
-                }*/
-              else {
+                else {
 
                     publishData();
                    //Intent i = new Intent(MainActivity.this, ConfirmActivity.class);
@@ -348,7 +314,7 @@ public class MainActivity extends AppCompatActivity
         final RequestQueue adddata;
         adddata= Volley.newRequestQueue(this);
 
-        String url="http://192.168.43.176/telehealthnew/doctor_list1.php";
+        String url="http://eitraproject.ml/telehealth/doctor_list1.php";
 
 
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -376,14 +342,14 @@ public class MainActivity extends AppCompatActivity
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
                 String name1 = null;
                 try {
                     name1 = json_name.getString(0).toString().trim();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                    Toast.makeText(MainActivity.this,name1,Toast.LENGTH_LONG).show();
+                   // Toast.makeText(MainActivity.this,name1,Toast.LENGTH_LONG).show();
 
               //  String[] separated = response.split(",");
                 int i;
@@ -421,6 +387,7 @@ public class MainActivity extends AppCompatActivity
                 spinnerAdapterdoc4.notifyDataSetChanged();
                 spinnerAdapterdoc5.notifyDataSetChanged();
 
+                Toast.makeText(MainActivity.this,"Doctor List Updated",Toast.LENGTH_LONG).show();
 
 
 
@@ -477,7 +444,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String url="http://192.168.43.176/telehealthnew/patient_reg.php?"+
+        String url="http://eitraproject.ml/telehealth/patient_reg.php?"+
                     "aadhar_id="+obj_adhar.getText().toString()+
                     "&password="+obj_pass.getText().toString()+
                     "&first_name="+obj_name.getText().toString()+
@@ -497,7 +464,7 @@ public class MainActivity extends AppCompatActivity
                     "&doc4="+aadharidofdoc4+
                     "&doc5="+aadharidofdoc5;
 
-        Toast.makeText(MainActivity.this,url,Toast.LENGTH_LONG).show();
+
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
               public void onResponse(String response) {
