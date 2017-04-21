@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
 
     EditText obj_name,obj_lname,obj_email,obj_pass,obj_add,obj_num,obj_adhar,obj_dob,
-            obj_doc1,obj_doc2,obj_doc3,obj_doc4,obj_doc5,obj_pin,obj_enum,obj_age;
+            obj_pin,obj_enum,obj_age;
 
     TextView obj_text_email;
 
