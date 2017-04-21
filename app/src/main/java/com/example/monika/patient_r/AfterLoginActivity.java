@@ -2,9 +2,8 @@ package com.example.monika.patient_r;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,14 +11,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import java.util.HashMap;
 
 public class AfterLoginActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    SessionManager session;
+    TextView obj_lt_userName,obj_bar_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_after_login);
+
+        session = new SessionManager(getApplicationContext());
+        obj_lt_userName = (TextView) findViewById(R.id.lt_userName);
+        //obj_bar_username = (TextView) findViewById(R.id.bar_username);
+        //  Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
+
+        session.checkLogin();
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        // name
+        String aadhar = user.get(SessionManager.KEY_AADHAR);
+
+        // email
+        //String email = user.get(SessionManager.KEY_EMAIL);
+
+        // displaying user data
+        obj_lt_userName.setText(aadhar);
+        //obj_bar_username.setText(aadhar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity
         final RequestQueue adddata;
         adddata= Volley.newRequestQueue(this);
 
-        String url="http://eitraproject.ml/telehealth/doctor_list1.php";
+        String url="http://eitraproject.ga/telehealth/doctor_list1.php";
 
 
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -444,7 +444,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String url="http://eitraproject.ml/telehealth/patient_reg.php?"+
+        String url="http://eitraproject.ga/telehealth/patient_reg.php?"+
                     "aadhar_id="+obj_adhar.getText().toString()+
                     "&password="+obj_pass.getText().toString()+
                     "&first_name="+obj_name.getText().toString()+
