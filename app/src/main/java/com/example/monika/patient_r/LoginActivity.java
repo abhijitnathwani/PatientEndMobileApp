@@ -209,21 +209,25 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
                     // For testing puspose aadhar, password is checked with sample data
                     // aadhar = test
                     // password = test
-                    if (response.equals("1")) {
+                    if (response.equals("0")) {
 
+
+                        // aadhar / password doesn't match
+                        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
+
+
+
+                    } else {
+                        String name = response;
                         // Creating user login session
                         // For testing i am stroing name, email as follow
                         // Use user real data
-                        session.createLoginSession(aadhar);
+                        session.createLoginSession(name);
 
                         // Staring MainActivity
                         Intent i = new Intent(getApplicationContext(), AfterLoginActivity.class);
                         startActivity(i);
                         finish();
-
-                    } else {
-                        // aadhar / password doesn't match
-                        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Username/Password is incorrect", false);
                     }
                 } else {
                     // user didn't entered aadhar or password

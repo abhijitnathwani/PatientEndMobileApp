@@ -464,6 +464,7 @@ public class MainActivity extends AppCompatActivity
                     "&doc4="+aadharidofdoc4+
                     "&doc5="+aadharidofdoc5;
 
+            Toast.makeText(this,url,Toast.LENGTH_LONG).show();
 
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
